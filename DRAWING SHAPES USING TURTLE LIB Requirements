@@ -1,0 +1,65 @@
+import turtle
+
+def draw_square(size, color):
+    turtle.color(color)
+    turtle.begin_fill()
+    for _ in range(4):
+        turtle.forward(size)
+        turtle.right(90)
+    turtle.end_fill()
+
+def draw_triangle(size, color):
+    turtle.color(color)
+    turtle.begin_fill()
+    for _ in range(3):
+        turtle.forward(size)
+        turtle.left(120)
+    turtle.end_fill()
+
+def draw_circle(size, color):
+    turtle.color(color)
+    turtle.begin_fill()
+    turtle.circle(size)
+    turtle.end_fill()
+
+def clear_drawing():
+    turtle.clear()
+    turtle.reset()
+
+def main():
+    while True:
+        print("Choose the shape to draw:")
+        print("1. Square")
+        print("2. Triangle")
+        print("3. Circle")
+        print("4. Clear Drawing")
+        print("5. Exit")
+
+        choice = int(input("Enter the choice (1-5): "))
+
+        if choice in [1, 2, 3]:
+            size = int(input("Enter the size of the shape: "))
+            color = input("Enter the color of the shape: ")
+
+            turtle.penup()
+            turtle.goto(0, 0)
+            turtle.pendown()
+
+            if choice == 1:
+                draw_square(size, color)
+            elif choice == 2:
+                draw_triangle(size, color)
+            elif choice == 3:
+                draw_circle(size, color)
+        elif choice == 4:
+            clear_drawing()
+        elif choice == 5:
+            print("Exiting...")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+    turtle.done()
+
+if __name__ == "__main__":
+    main()
